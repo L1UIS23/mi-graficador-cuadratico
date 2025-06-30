@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solucionador y Graficador de Funciones</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Incluir la librería Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Solucionador y Graficador de Funciones</h1>
+        <p class="intro-text">Introduce los coeficientes para funciones lineales o cuadráticas, y obtén su solución, dominio, rango y un gráfico interactivo. ¡También puedes escuchar la respuesta!</p>
+
+        <!-- Sección de Función Lineal -->
+        <div class="section">
+            <h2>Función Lineal: $ax + b \text{ OP } 0$</h2>
+            <div class="input-group">
+                <label for="linear_a">a:</label>
+                <input type="number" id="linear_a" value="1">
+                <span class="formula-part">x +</span>
+                <label for="linear_b">b:</label>
+                <input type="number" id="linear_b" value="0">
+                <select id="linear_op" class="operator-select">
+                    <option value="eq">=</option>
+                    <option value="gt">&gt;</option>
+                    <option value="lt">&lt;</option>
+                    <option value="ge">&ge;</option>
+                    <option value="le">&le;</option>
+                </select>
+                <span class="formula-part">0</span>
+            </div>
+            <button onclick="solveLinear()">Resolver Lineal</button>
+            <button class="voice-btn" onclick="speakResult('linear_solution_text')">🔊 Escuchar Solución Lineal</button>
+            <div id="linear_result" class="result-box">
+                <h3>Resultados Lineales:</h3>
+                <p><strong>Función:</strong> <span id="linear_function_display"></span></p>
+                <p><strong>Dominio:</strong> <span id="linear_domain"></span></p>
+                <p><strong>Rango:</strong> <span id="linear_range"></span></p>
+                <p><strong>Solución:</strong> <span id="linear_solution_text"></span></p>
+                <div class="graph-container">
+                    <h4>Gráfico Lineal:</h4>
+                    <canvas id="linearChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Función Cuadrática -->
+        <div class="section">
+            <h2>Función Cuadrática: $ax^2 + bx + c \text{ OP } 0$</h2>
+            <div class="input-group">
+                <label for="quadratic_a">a:</label>
+                <input type="number" id="quadratic_a" value="1">
+                <span class="formula-part">x² +</span>
+                <label for="quadratic_b">b:</label>
+                <input type="number" id="quadratic_b" value="0">
+                <span class="formula-part">x +</span>
+                <label for="quadratic_c">c:</label>
+                <input type="number" id="quadratic_c" value="0">
+                <select id="quadratic_op" class="operator-select">
+                    <option value="eq">=</option>
+                    <option value="gt">&gt;</option>
+                    <option value="lt">&lt;</option>
+                    <option value="ge">&ge;</option>
+                    <option value="le">&le;</option>
+                </select>
+                <span class="formula-part">0</span>
+            </div>
+            <button onclick="solveQuadratic()">Resolver Cuadrática</button>
+            <button class="voice-btn" onclick="speakResult('quadratic_solution_text')">🔊 Escuchar Solución Cuadrática</button>
+            <div id="quadratic_result" class="result-box">
+                <h3>Resultados Cuadráticos:</h3>
+                <p><strong>Función:</strong> <span id="quadratic_function_display"></span></p>
+                <p><strong>Dominio:</strong> <span id="quadratic_domain"></span></p>
+                <p><strong>Rango:</strong> <span id="quadratic_range"></span></p>
+                <p><strong>Vértice:</strong> <span id="quadratic_vertex"></span></p>
+                <p><strong>Solución:</strong> <span id="quadratic_solution_text"></span></p>
+                <div class="graph-container">
+                    <h4>Gráfico Cuadrático:</h4>
+                    <canvas id="quadraticChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
